@@ -4,6 +4,10 @@ Linode Quick Deployment (LiQuiD) CLI tool
 
 Uses <a href="https://github.com/tj/commander.js/">commander.js</a>, <a href="https://github.com/SBoudrias/Inquirer.js/">inquirer.js</a> and the <a href="https://developers.linode.com/api/v4">Linode API</a>
 
+## Demo
+
+![Demo](demos/create.svg)
+
 ## Install
 
 ```
