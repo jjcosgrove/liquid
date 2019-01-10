@@ -48,4 +48,4 @@ This is very much a pre-pre alpha release (i.e. if it blows up your mac, don't c
 - [ ] Nicer visuals
 - [ ] Implement profiles
 - [ ] Implement domains
-- [ ] Refactor coed
+- [ ] Refactor code
