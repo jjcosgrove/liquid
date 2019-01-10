@@ -5,12 +5,10 @@ import ls from 'log-symbols'
 import { config } from '@config'
 import { app } from '@app'
 
-// info
 program
   .version(config.version)
   .description(config.description)
 
-// init
 program
   .command('init')
   .description('Initialize LiQuiD with a Linode Personal Access Token')
@@ -29,7 +27,6 @@ program
       .then(answers => app.initialize(answers.token))
   })
 
-// deploy
 program
   .command('create')
   .description('Provision a new Linode instance using the LiQuiD wizard')
@@ -86,7 +83,6 @@ program
 
 program.parse(process.argv)
 
-// validator for inputs
 const nonEmptyCheck = (string) => {
   return string.length ? true : 'Cannot be empty'
 }
