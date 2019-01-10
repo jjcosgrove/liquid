@@ -14,9 +14,25 @@ Uses <a href="https://github.com/tj/commander.js/">commander.js</a>, <a href="ht
 npm -g install @jjcosgrove/liquid
 ```
 
-## Features
+## Usage
 
-LiQuiD lets you easily deploy a new Linode instance, from your terminal by presenting a series of simple questions and then making the necessary Linode API calls to deploy your new instance. It will respond, on success, with the IP address if your new instance.
+Set up your Linode Personal Access Token ([here](https://cloud.linode.com/profile/tokens)) and enter it into the LiQuiD CLI tool:
+
+```bash
+$ liquid init
+? Linode Personal Access Token: PASTE_YOUR_TOKEN_HERE_AND_PRESS_ENTER
+✔ LiQuiD successfully initialized
+```
+
+Now, anytime you need to quickly deploy a new Linode instance you can simply run:
+
+```bash
+liquid create
+```
+
+And follow the prompts. Upon successful completion it will output a message detailing the IP address and provisioning status of your new Linode instance.
+
+Current supported commands are:
 
 command|function
 -|-|
