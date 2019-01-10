@@ -6,7 +6,7 @@ Uses <a href="https://github.com/tj/commander.js/">commander.js</a>, <a href="ht
 
 ## Demo
 
-![Demo](demos/create.svg)
+![Demo](https://unpkg.com/@jjcosgrove/liquid@latest/demos/create.svg)
 
 ## Install
 
