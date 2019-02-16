@@ -86,11 +86,11 @@ class App {
     let api = new API(configuration.token)
 
     api.createLinode(profile)
-      .then((linode) => {
+      .then(linode => {
         console.log(ls.success, `Linode: ${linode.label} (id: ${linode.id}) has been assigned the IP: ${linode.ipv4}, is currently ${linode.status} ${profile.booted ? 'and will' : 'but will not'} boot.`)
       })
-      .catch((err) => {
-        console.log(ls.error, err.message)
+      .catch(error => {
+        console.log(ls.error, error.message)
         console.log(ls.error, profile)
       })
   }
