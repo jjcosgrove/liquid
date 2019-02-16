@@ -73,6 +73,14 @@ class App {
       return
     }
 
+    if (profile.include_ssh_key) {
+      profile.authorized_keys = [
+        this.readSSHKeyFromFile(profile.authorized_keys)
+      ]
+    } else {
+      profile.include_ssh_key = null
+    }
+
     let configuration = this.readConfig()
 
     let api = new API(configuration.token)
@@ -92,6 +100,14 @@ class App {
       return fs.statSync(this.baseDir).isDirectory()
     } catch (error) {
       return !error.code === 'ENOENT'
+    }
+  }
+
+  readSSHKeyFromFile (file) {
+    try {
+      return fs.readFileSync(file, 'utf8').toString().replace('\n', '')
+    } catch (error) {
+      console.log(ls.error, `Cannot read from ${config.appName} configuration`)
     }
   }
 

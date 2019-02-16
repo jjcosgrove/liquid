@@ -1,9 +1,15 @@
-import { default as program } from 'commander'
+import os from 'os'
+import program from 'commander'
 import { prompt } from 'inquirer'
+import { PathPrompt } from 'inquirer-path'
 import ls from 'log-symbols'
 
 import { config } from '@config'
 import { app } from '@app'
+
+const HOME_DIR = os.homedir()
+
+prompt.registerPrompt('path', PathPrompt)
 
 program
   .version(config.version)
@@ -66,6 +72,19 @@ program
           name: 'root_pass',
           message: 'Password',
           validate: (value) => nonEmptyCheck(value)
+        }, {
+          type: 'confirm',
+          name: 'include_ssh_key',
+          default: false,
+          message: 'Include SSH Key?'
+        }, {
+          type: 'path',
+          name: 'authorized_keys',
+          cwd: HOME_DIR,
+          default: `${HOME_DIR}/.ssh/id_rsa.pub`,
+          message: 'SSH Key?',
+          when: (answers) => answers.include_ssh_key,
+          validate: (value) => require('path').extname(value) === '.pub' || 'Nope'
         }, {
           type: 'confirm',
           name: 'backups_enabled',

@@ -1,6 +1,6 @@
 {
   "name": "@jjcosgrove/liquid",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Linode Quick Deployment (LiQuiD) CLI tool",
   "author": "Jonathan James Cosgrove",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "axios": "^0.18.0",
     "commander": "^2.19.0",
     "inquirer": "^6.2.1",
+    "inquirer-path": "^1.0.0-beta5",
     "js-yaml": "^3.12.1",
     "log-symbols": "^2.2.0",
     "mkdirp": "^0.5.1"
