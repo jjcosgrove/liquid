@@ -1,6 +1,6 @@
 {
   "name": "@jjcosgrove/liquid",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Linode Quick Deployment (LiQuiD) CLI tool",
   "author": "Jonathan James Cosgrove",
   "license": "MIT",
