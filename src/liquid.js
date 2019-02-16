@@ -1,4 +1,5 @@
 import os from 'os'
+import { extname } from 'path'
 import program from 'commander'
 import { prompt } from 'inquirer'
 import { PathPrompt } from 'inquirer-path'
@@ -28,7 +29,7 @@ program
       type: 'input',
       name: 'token',
       message: 'Linode Personal Access Token:',
-      validate: (value) => nonEmptyCheck(value)
+      validate: isNotEmptyStringValidator
     }])
       .then(answers => app.initialize(answers.token))
   })
@@ -71,7 +72,7 @@ program
           type: 'password',
           name: 'root_pass',
           message: 'Password',
-          validate: (value) => nonEmptyCheck(value)
+          validate: isNotEmptyStringValidator
         }, {
           type: 'confirm',
           name: 'include_ssh_key',
@@ -83,8 +84,8 @@ program
           cwd: HOME_DIR,
           default: `${HOME_DIR}/.ssh/id_rsa.pub`,
           message: 'SSH Key?',
-          when: (answers) => answers.include_ssh_key,
-          validate: (value) => require('path').extname(value) === '.pub' || 'Nope'
+          when: answers => answers.include_ssh_key,
+          validate: isValidSSHKeyFileValidator
         }, {
           type: 'confirm',
           name: 'backups_enabled',
@@ -102,6 +103,10 @@ program
 
 program.parse(process.argv)
 
-const nonEmptyCheck = (string) => {
+const isNotEmptyStringValidator = string => {
   return string.length ? true : 'Cannot be empty'
+}
+
+const isValidSSHKeyFileValidator = sshKeyFilePath => {
+  return extname(sshKeyFilePath) === '.pub' ? true : 'Invalid SSH Key'
 }
