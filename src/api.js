@@ -23,7 +23,7 @@ class API {
   }
 
   createConfig (token) {
-    let apiConfig = config.linode.baseAPIConfig
+    const apiConfig = config.linode.baseAPIConfig
 
     this.apiConfig = {
       ...apiConfig,

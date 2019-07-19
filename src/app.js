@@ -37,15 +37,15 @@ class App {
 
   getLinodeData () {
     return new Promise((resolve, reject) => {
-      let configuration = this.readConfig()
+      const configuration = this.readConfig()
 
-      let api = new API(configuration.token)
+      const api = new API(configuration.token)
 
-      let types = api.getTypes()
-      let regions = api.getRegions()
-      let images = api.getImages()
+      const types = api.getTypes()
+      const regions = api.getRegions()
+      const images = api.getImages()
 
-      let getLinodeData = Promise.all([types, regions, images])
+      const getLinodeData = Promise.all([types, regions, images])
 
       getLinodeData
         .then(([types, regions, images]) => {
@@ -81,9 +81,9 @@ class App {
       profile.include_ssh_key = null
     }
 
-    let configuration = this.readConfig()
+    const configuration = this.readConfig()
 
-    let api = new API(configuration.token)
+    const api = new API(configuration.token)
 
     api.createLinode(profile)
       .then(linode => {
@@ -128,4 +128,4 @@ class App {
   }
 }
 
-export let app = new App()
+export const app = new App()
